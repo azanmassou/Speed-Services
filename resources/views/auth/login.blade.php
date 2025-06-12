@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container-fluid py-5 min-vh-100 d-flex align-items-center justify-content-center"
         style="background-image: url('{{ asset('images/bg_welcome.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 
@@ -16,8 +15,8 @@
             <form method="POST" action="{{ route('login') }}" novalidate>
                 @csrf
 
-                <x-input name="identifier" label="Psuedo ou E-mail" type="text" placeholder="Entrez votre psuedo ou email"
-                    icon="bi-person-circle" class="form-control-lg" />
+                <x-input name="identifier" label="Psuedo ou E-mail" type="text"
+                    placeholder="Entrez votre psuedo ou email" icon="bi-person-circle" class="form-control-lg" />
 
                 <x-password-input name="password" label="Mot de passe" placeholder="********" iconColor="text-warning"
                     class="form-control-lg" />

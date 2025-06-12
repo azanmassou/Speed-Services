@@ -65,4 +65,11 @@ class AuthController extends Controller
 
         return redirect('/login')->with('success', 'Déconnexion réussie.');
     }
+
+    // Dashboard
+
+     public function dashboard(Request $request)
+    {
+        return view('admin.index')->with('success', 'Connexion reussie avec success.');
+    }
 }

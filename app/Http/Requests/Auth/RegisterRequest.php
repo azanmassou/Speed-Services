@@ -22,8 +22,8 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
          return [
-            'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:150', 'unique:users,email'],
+            'name' => ['required', 'string', 'max:100','unique:users,name'],
+            'email' => ['required', 'string', 'email', 'max:10', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'terms' => ['accepted'],
         ];
@@ -32,16 +32,17 @@ class RegisterRequest extends FormRequest
       public function messages(): array
     {
         return [
-            'name.required' => 'Le nom complet est obligatoire.',
-            'name.max' => 'Le nom complet ne doit pas dépasser :max caractères.',
+            'name.required' => 'Le nom est obligatoire.',
+            'name.unique' => 'Cet nom est déjà utilisée.',
+            'name.max' => 'Le nom ne doit pas dépasser :max caractères.',
 
             'email.required' => 'L\'adresse e-mail est obligatoire.',
             'email.email' => 'Veuillez fournir une adresse e-mail valide.',
-            'email.max' => 'L\'adresse e-mail ne doit pas dépasser :max caractères.',
+            'email.max' => 'L\'adresse e-mail ne doit pas dépasser :10 caractères.',
             'email.unique' => 'Cette adresse e-mail est déjà utilisée.',
 
             'password.required' => 'Le mot de passe est obligatoire.',
-            'password.min' => 'Le mot de passe doit contenir au moins :min caractères.',
+            'password.min' => 'Le mot de passe doit contenir au moins :8 caractères.',
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
 
             'terms.accepted' => 'Vous devez accepter les conditions d\'utilisation pour continuer.',
@@ -51,7 +52,7 @@ class RegisterRequest extends FormRequest
      public function attributes(): array
     {
         return [
-            'name' => 'nom complet',
+            'name' => 'nom',
             'email' => 'adresse e-mail',
             'password' => 'mot de passe',
             'password_confirmation' => 'confirmation du mot de passe',

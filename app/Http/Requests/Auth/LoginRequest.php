@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
         return [
             //
             'identifier' => ['required', 'string'],
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:8',
         ];
     }
 
@@ -34,6 +34,7 @@ class LoginRequest extends FormRequest
         return [
             'identifier.required' => 'Veuillez entrer votre identifiant (email ou nom d’utilisateur).',
             'password.required' => 'Veuillez entrer votre mot de passe.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractère.',
         ];
     }
 
